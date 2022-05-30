@@ -1,7 +1,7 @@
 require("dotenv").config();
 const debug = require("debug")("reserve:root");
 const chalk = require("chalk");
-const connectDb = require("./src/server/db");
+const connectDb = require("./src/db");
 const initialServer = require("./src/server/initalServer");
 
 (async () => {
