@@ -6,7 +6,7 @@ const notFoundError = (req, res) => {
 };
 
 // eslint-disable-next-line no-unused-vars
-const generalError = (error, re, res, next) => {
+const generalError = (error, req, res, next) => {
   res.status(500).json({ msg: "server error" });
   debug(`server error: ${error.message}`);
 };
