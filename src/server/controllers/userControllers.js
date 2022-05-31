@@ -5,7 +5,7 @@ const chalk = require("chalk");
 const User = require("../../db/models/User");
 
 const registerUser = async (req, res, next) => {
-  const { restauranName, CIF, username, password } = req.body;
+  const { restaurantName, CIF, username, password } = req.body;
 
   const encryptedPassword = await bcrypt.hash(password, 10);
 
@@ -21,7 +21,7 @@ const registerUser = async (req, res, next) => {
 
   try {
     await User.create({
-      restauranName,
+      restaurantName,
       username,
       CIF,
       password: encryptedPassword,
