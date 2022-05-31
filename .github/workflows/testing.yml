@@ -18,3 +18,4 @@ jobs:
         run: npm run test
         env:
           JWT_SECRET: ${{secrets.JWT_SECRET}}
+          MONGO_STRING_TEST: ${{secrets.MONGO_STRING_TEST}}
