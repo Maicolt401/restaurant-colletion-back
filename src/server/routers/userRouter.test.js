@@ -7,7 +7,7 @@ const User = require("../../db/models/User");
 const userMock = require("../mocks/userMocks");
 
 beforeAll(async () => {
-  const memoryTest = process.env.MONGO_STRING_TEST;
+  const memoryTest = await process.env.MONGO_STRING_TEST;
   await connectDb(memoryTest);
 });
 
