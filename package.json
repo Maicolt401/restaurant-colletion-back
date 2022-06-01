@@ -47,7 +47,6 @@
       "src/**/*.js",
       "!src/index.js",
       "!src/server/initialServer.js",
-      "!src/server/index.js",
       "!src/db/index.js",
       "!.eslintrc.js"
     ]
