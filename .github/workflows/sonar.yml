@@ -17,6 +17,7 @@ jobs:
         run: npm run test-coverage
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          MONGO_STRING_TEST: ${{secrets.MONGO_STRING_TEST}}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
