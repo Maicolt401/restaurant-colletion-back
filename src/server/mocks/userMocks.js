@@ -5,4 +5,8 @@ const userMock = {
   CIF: "y2135ds52",
 };
 
-module.exports = userMock;
+const mockLogin = {
+  username: "lavillita",
+  passwprd: "123456",
+};
+module.exports = { userMock, mockLogin };
