@@ -1,8 +1,12 @@
 const userMock = {
-  restaurantName: "la villa",
-  username: "villasants",
-  password: "123456",
+  restaurantName: "la villas",
   CIF: "y2135ds52",
+  username: "villasants2",
+  password: "123456",
 };
 
-module.exports = userMock;
+const mockLogin = {
+  username: "villasants2",
+  password: "123456",
+};
+module.exports = { userMock, mockLogin };

@@ -4,10 +4,10 @@ const mongoose = require("mongoose");
 const app = require("../index");
 const connectDb = require("../../db");
 const User = require("../../db/models/User");
-const userMock = require("../mocks/userMocks");
+const { userMock } = require("../mocks/userMocks");
 
+const memoryTest = process.env.MONGO_STRING_TEST;
 beforeAll(async () => {
-  const memoryTest = await process.env.MONGO_STRING_TEST;
   await connectDb(memoryTest);
 });
 

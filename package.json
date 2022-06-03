@@ -6,7 +6,7 @@
     "start": "node index",
     "start-dev": "nodemon src -q",
     "prepare": "husky install",
-    "test": "jest --watchAll=false  --passWithNoTests",
+    "test": "jest --watchAll=false  --passWithNoTests --detectOpenHandles",
     "test-coverage": "jest --coverage --watchAll=false"
   },
   "keywords": [],
