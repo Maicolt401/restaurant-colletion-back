@@ -1,13 +1,15 @@
-// const User = require("../../db/models/User");
-// const userMock = require("../mocks/userMocks");
+// const bcrypt = require("bcrypt");
+const User = require("../../db/models/User");
+const userMock = require("../mocks/userMocks");
 const { registerUser } = require("./userControllers");
 
 jest.mock("../../db/models/User", () => ({
   ...jest.requireActual("../../db/models/User"),
   create: jest.fn(),
   findOne: jest.fn(),
-  hash: jest.fn(),
 }));
+
+jest.mock("bcrypt", () => ({ compare: jest.fn(), hash: jest.fn() }));
 
 const res = {
   status: jest.fn().mockReturnThis(),
@@ -32,21 +34,21 @@ describe("Given a Register funtion", () => {
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
     });
   });
-  // describe("When it's called with an existen username", () => {
-  //   test("Then it should call response with error message 'User already exists'", async () => {
-  //     const req = {
-  //       body: userMock,
-  //     };
+  describe("When it's called with an existen username", () => {
+    test("Then it should call response with error message 'User already exists'", async () => {
+      const req = {
+        body: userMock,
+      };
 
-  //     const expectErrorMessage = new Error();
-  //     expectErrorMessage.customMessage = "User already exists";
+      const error = new Error();
+      error.customMessage = "User already exists";
 
-  //     const next = jest.fn();
-  //     User.findOne = jest.fn().mockResolvedValue(true);
+      const next = jest.fn();
+      User.findOne = jest.fn().mockResolvedValue(true);
 
-  //     await registerUser(req, res, next);
+      await registerUser(req, res, next);
 
-  //     expect(next).toHaveBeenCalledWith(expectErrorMessage);
-  //   });
-  // });
+      expect(next).toHaveBeenCalledWith(error);
+    });
+  });
 });

@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "441fd78c-ad5b-46e1-b2c9-8785ed724696",
+		"name": "RESTAUNRANT COLLECTION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{origin}}/clients/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurantName\":\"las villa\",\r\n    \"CIF\": \"y52165425\",\r\n    \"username\":\"villita\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{origin}}clients/register",
+					"host": [
+						"{{origin}}clients"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "origin",
+			"value": "https://maicol-torres-back-final-project-202204.onrender.com/",
+			"type": "default"
+		}
+	]
+}
