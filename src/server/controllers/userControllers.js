@@ -20,7 +20,6 @@ const registerUser = async (req, res, next) => {
 
     next(error);
   }
-
   try {
     await User.create({
       restaurantName,
@@ -28,11 +27,14 @@ const registerUser = async (req, res, next) => {
       CIF,
       password: encryptedPassword,
     });
+
     res.status(201).json(req.body);
     debug(chalk.yellow("user created"));
-  } catch (error) {
+  } catch {
+    const error = new Error();
     error.statusCode = 400;
     error.customMessage = "bad request";
+
     next(error);
   }
 };
@@ -43,7 +45,10 @@ const userLogin = async (req, res, next) => {
   const user = await User.findOne({ username });
 
   if (!user) {
-    const error = debug(403, "Bad request", "User or password incorrect");
+    const error = new Error();
+    error.statusCode = 403;
+    error.customMessage = "bad request";
+    debug("User or password incorrect");
     next(error);
     return;
   }
@@ -54,7 +59,10 @@ const userLogin = async (req, res, next) => {
 
   const rightPassword = await bcrypt.compare(password, user.password);
   if (!rightPassword) {
-    const error = debug(403, "Bad request", "User or password incorrect");
+    const error = new Error();
+    error.statusCode = 403;
+    error.customMessage = "bad request";
+    debug("User or password incorrect");
 
     next(error);
     return;
