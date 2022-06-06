@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, SchemaTypes } = require("mongoose");
 
 const userSchema = new Schema({
   restaurantName: {
@@ -15,6 +15,10 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
+  },
+  reserves: {
+    type: [{ type: SchemaTypes.ObjectId, ref: "reserves" }],
+    default: [],
   },
 });
 
