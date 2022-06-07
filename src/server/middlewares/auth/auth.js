@@ -8,7 +8,6 @@ const auth = (req, res, next) => {
   try {
     if (!authorization.includes("Bearer")) {
       debug(chalk.redBright("Authorization does not include a token bearer"));
-
       throw new Error();
     }
 
