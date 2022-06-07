@@ -1,4 +1,4 @@
-const Reserve = require("../../db/models/david");
+const Reserve = require("../../db/models/Reserve");
 
 const getReserves = async (req, res, next) => {
   try {
