@@ -9,7 +9,7 @@ describe("Given an auth function", () => {
       const next = jest.fn();
 
       const req = {
-        headers: { Authorization: "Bearer " },
+        headers: { authorization: "Bearer " },
       };
 
       auth(req, null, next);

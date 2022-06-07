@@ -1,6 +1,6 @@
+const Reserve = require("../../db/models/Reserves");
 const { reservesReadyMock } = require("../mocks/reservesReadyMock");
 
-const Reserve = require("../../db/models/reserves");
 const { getReserves } = require("./reservesControllers");
 
 describe("Given a reservesControllers functionk", () => {
@@ -14,7 +14,7 @@ describe("Given a reservesControllers functionk", () => {
         json: jest.fn(),
       };
       const expecStatus = 200;
-      Reserve.findOne = jest.fn().mockResolvedValue(false);
+      Reserve.find = jest.fn().mockResolvedValue(false);
 
       await getReserves(req, res, null);
 

@@ -8,7 +8,7 @@ const ReservesSchema = new Schema({
   time: {
     type: Number,
   },
-  numPersons: {
+  numberPersons: {
     type: Number,
   },
   date: {
@@ -26,6 +26,6 @@ const ReservesSchema = new Schema({
   },
 });
 
-const Reserve = model("Check", ReservesSchema, "checks");
+const Reserve = model("Reserve", ReservesSchema, "reserves");
 
 module.exports = Reserve;

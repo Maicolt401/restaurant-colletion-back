@@ -1,4 +1,4 @@
-const debug = require("debug")("socialRed:middlewares:errors");
+const debug = require("debug")("reserve:middlewares:errors");
 
 const notFoundError = (req, res) => {
   res.status(404).json({ msg: "404 endpoint Not Found" });
