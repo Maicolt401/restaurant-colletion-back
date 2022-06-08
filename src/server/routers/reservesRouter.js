@@ -1,9 +1,13 @@
 require("dotenv").config();
 const express = require("express");
-const { getReserves } = require("../controllers/reservesControllers");
+const {
+  getReserves,
+  deleteReserve,
+} = require("../controllers/reservesControllers");
 
 const reservesRouter = express.Router();
 
 reservesRouter.get("/", getReserves);
+reservesRouter.delete("/:idReserve", deleteReserve);
 
 module.exports = reservesRouter;
