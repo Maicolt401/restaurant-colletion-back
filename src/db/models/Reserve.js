@@ -5,8 +5,8 @@ const ReservesSchema = new Schema({
     type: String,
     required: true,
   },
-  time: {
-    type: Number,
+  hour: {
+    type: String,
   },
   numberPersons: {
     type: Number,
