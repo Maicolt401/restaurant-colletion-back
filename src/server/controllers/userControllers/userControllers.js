@@ -1,9 +1,9 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const debug = require("debug")("redsocial:server:controllers:login");
+const debug = require("debug")("reserve:server:userController");
 const chalk = require("chalk");
 const jsonwebtoken = require("jsonwebtoken");
-const User = require("../../db/models/User");
+const User = require("../../../db/models/User/User");
 
 const registerUser = async (req, res, next) => {
   const { restaurantName, CIF, username, password } = req.body;

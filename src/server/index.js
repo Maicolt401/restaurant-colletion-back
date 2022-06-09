@@ -2,13 +2,14 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
-const { notFoundError, generalError } = require("./middlewares/errors");
 const userRouter = require("./routers/userRouter");
 const reservesRouter = require("./routers/reservesRouter");
 const auth = require("./middlewares/auth/auth");
+const { notFoundError, generalError } = require("./middlewares/errors/errors");
 
 const app = express();
 
+app.use(express.static("uploads"));
 app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
