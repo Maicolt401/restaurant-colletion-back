@@ -1,11 +1,11 @@
 const bcrypt = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
-const User = require("../../db/models/User");
-const { userMock, mockLogin } = require("../mocks/userMocks");
+const User = require("../../../db/models/User/User");
+const { userMock, mockLogin } = require("../../mocks/userMocks");
 const { registerUser, userLogin } = require("./userControllers");
 
-jest.mock("../../db/models/User", () => ({
-  ...jest.requireActual("../../db/models/User"),
+jest.mock("../../../db/models/User/User", () => ({
+  ...jest.requireActual("../../../db/models/User/User"),
   create: jest.fn(),
   findOne: jest.fn(),
 }));

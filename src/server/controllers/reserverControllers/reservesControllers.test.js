@@ -1,5 +1,5 @@
-const Reserve = require("../../db/models/Reserve");
-const { reservesReadyMock } = require("../mocks/reservesReadyMock");
+const Reserve = require("../../../db/models/Reserve/Reserve");
+const { reservesReadyMock } = require("../../mocks/reservesReadyMock");
 
 const { getReserves, deleteReserve } = require("./reservesControllers");
 

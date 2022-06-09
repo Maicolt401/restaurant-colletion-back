@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node index",
-    "start-dev": "nodemon src -q",
+    "start-dev": "nodemon index -q",
     "prepare": "husky install",
     "test": "jest --watchAll=false  --passWithNoTests --detectOpenHandles",
     "test-coverage": "jest --coverage --watchAll=false"
