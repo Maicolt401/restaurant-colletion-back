@@ -1,7 +1,4 @@
 require("dotenv").config();
-const path = require("path");
-const debug = require("debug")("reserve:server:reserverController");
-const fs = require("fs");
 const Reserve = require("../../../db/models/Reserve/Reserve");
 
 const getReserves = async (req, res, next) => {
@@ -33,29 +30,17 @@ const deleteReserve = async (req, res, next) => {
 
 const createReserve = async (req, res, next) => {
   const { name, hour, numberPersons, date, dni } = req.body;
-  const { file } = req;
-
-  const newImage = `${Date.now()}${file.originalname}`;
+  const { img, imgBackup } = req;
 
   try {
-    fs.rename(
-      path.join("uploads", "images", file.filename),
-      path.join("uploads", "images", newImage),
-      async (error) => {
-        if (error) {
-          debug("no puedes renombrar");
-          next(error);
-        }
-      }
-    );
-
     const newReserve = await Reserve.create({
       name,
       hour,
       numberPersons,
       date,
       dni,
-      image: path.join("uploads", "images"),
+      image: img,
+      imageBackup: imgBackup,
     });
 
     res.status(201).json(newReserve);

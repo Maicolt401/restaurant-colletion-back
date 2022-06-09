@@ -20,6 +20,11 @@ const ReservesSchema = new Schema({
     type: String,
   },
 
+  imageBackup: {
+    type: String,
+    default: "",
+  },
+
   image: {
     type: String,
     default: "",
