@@ -6,6 +6,7 @@ const {
   getReserves,
   deleteReserve,
   createReserve,
+  editReserve,
 } = require("./reservesControllers");
 
 describe("Given a reservesControllers functionk", () => {
@@ -110,6 +111,51 @@ describe("Given a createReserve controller", () => {
 
       expect(res.status).toHaveBeenCalledWith(201);
       expect(res.json).toHaveBeenCalledWith(expectedObjectCreated);
+    });
+  });
+});
+
+describe("Given a editReserve controller", () => {
+  const ReserveId = "1974";
+  const name = "mariamar";
+  const numberPersons = 15;
+  const hour = 19;
+  const date = "19/03/2022";
+
+  const res = {
+    status: jest.fn().mockReturnThis(),
+    json: jest.fn(),
+  };
+
+  const req = {
+    params: { ReserveId },
+    body: {
+      name,
+      date,
+      hour,
+      numberPersons,
+    },
+  };
+  describe("When it's invoqued with a name, date, hour, numberPersons a id of the reserve to edit", () => {
+    test("Then it should call the response's status method with 200 and the new object edited", async () => {
+      const noteToEdit = {
+        author: name,
+      };
+      const newReserve = {
+        name,
+        date,
+        hour,
+        numberPersons,
+        author: name,
+      };
+
+      Reserve.findById = jest.fn().mockResolvedValue(noteToEdit);
+      Reserve.findByIdAndUpdate = jest.fn().mockResolvedValue({});
+      Reserve.findById = jest.fn().mockResolvedValue(newReserve);
+
+      await editReserve(req, res, null);
+
+      expect(res.status).toHaveBeenCalledWith(200);
     });
   });
 });
