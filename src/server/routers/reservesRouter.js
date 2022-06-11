@@ -6,6 +6,7 @@ const {
   getReserves,
   deleteReserve,
   createReserve,
+  editReserve,
 } = require("../controllers/reserverControllers/reservesControllers");
 const firerbaseImages = require("../middlewares/firerbaseImages/firerbaseImages");
 
@@ -26,5 +27,6 @@ reservesRouter.post(
   firerbaseImages,
   createReserve
 );
+reservesRouter.put("/:idReserve", editReserve);
 
 module.exports = reservesRouter;
