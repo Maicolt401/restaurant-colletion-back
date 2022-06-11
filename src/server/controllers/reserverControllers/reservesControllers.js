@@ -53,4 +53,33 @@ const createReserve = async (req, res, next) => {
   }
 };
 
-module.exports = { getReserves, deleteReserve, createReserve };
+const editReserve = async (req, res) => {
+  const { idReserve } = req.params;
+  const { name, hour, date, numberPersons, DNI } = req.body;
+  const { img, imgBackup } = req;
+
+  try {
+    const reserveEdited = {
+      DNI,
+      hour,
+      date,
+      name,
+      numberPersons,
+      image: img,
+      imageBackup: imgBackup,
+    };
+    const newReserve = await Reserve.findByIdAndUpdate(
+      idReserve,
+      reserveEdited,
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(newReserve);
+  } catch (error) {
+    error.customMessage = "Reserve not found";
+    error.code = 400;
+  }
+};
+
+module.exports = { getReserves, deleteReserve, createReserve, editReserve };
