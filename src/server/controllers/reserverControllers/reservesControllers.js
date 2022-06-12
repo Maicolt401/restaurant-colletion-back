@@ -1,3 +1,4 @@
+const debug = require("debug")("reserve:server:controllers:reserves");
 require("dotenv").config();
 const Reserve = require("../../../db/models/Reserve/Reserve");
 
@@ -82,4 +83,17 @@ const editReserve = async (req, res) => {
   }
 };
 
-module.exports = { getReserves, deleteReserve, createReserve, editReserve };
+const getOneReserve = async (req, res) => {
+  const { idReserve } = req.params;
+  const reserve = await Reserve.findById(idReserve);
+  debug("request to get one reserve received");
+  res.status(200).json(reserve);
+};
+
+module.exports = {
+  getReserves,
+  deleteReserve,
+  createReserve,
+  editReserve,
+  getOneReserve,
+};
