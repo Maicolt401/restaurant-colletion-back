@@ -6,14 +6,13 @@ const ReservesSchema = new Schema({
     required: true,
   },
   hour: {
-    type: Number,
+    type: String,
   },
   numberPersons: {
     type: Number,
   },
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
   },
 
   DNI: {
