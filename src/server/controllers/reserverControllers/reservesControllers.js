@@ -85,9 +85,16 @@ const editReserve = async (req, res) => {
 
 const getOneReserve = async (req, res) => {
   const { idReserve } = req.params;
-  const reserve = await Reserve.findById(idReserve);
-  debug("request to get one reserve received");
-  res.status(200).json(reserve);
+  
+  try{
+    const reserve = await Reserve.findById(idReserve);
+    debug("request to get one reserve received");
+    res.status(200).json(reserve);
+
+  }catch(error){
+    error.customMessage = "Id not Found"
+    error.code= 400;
+  }
 };
 
 module.exports = {
